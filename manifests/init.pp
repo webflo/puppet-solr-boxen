@@ -16,3 +16,17 @@ class solr {
     require => Class['java']
   }
 }
+
+class solr::version14 {
+  include homebrew
+  include java
+
+  homebrew::formula { 'solr14':
+    before => Package['boxen/brews/solr14']
+  }
+
+  package { 'boxen/brews/solr14':
+    ensure  => '1.4.1-boxen1',
+    require => Class['java']
+  }
+}
