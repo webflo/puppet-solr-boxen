@@ -10,7 +10,7 @@ class Solr14 < Formula
   def script; <<-EOS.undent
     #!/bin/sh
     if [ -z "$1" ]; then
-      echo "Usage: $ solr path/to/config/dir"
+      echo "Usage: $ solr14 path/to/config/dir"
     else
       cd #{libexec}/example && java -Dsolr.solr.home=$1 -jar start.jar
     fi
@@ -19,15 +19,7 @@ class Solr14 < Formula
 
   def install
     libexec.install Dir['*']
-    (bin+'solr').write script
-  end
-
-  def caveats; <<-EOS.undent
-    To start solr:
-        solr path/to/solr/config/dir
-
-    See the solr homepage for more setup information:
-        brew home solr
-    EOS
+    (bin+'solr14').write script
+    (var+'logs'+name).mkpath
   end
 end
