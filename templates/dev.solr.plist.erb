@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>dev.solr.<%= @version %></string>
+
+    <key>Boxen</key>
+    <dict>
+      <key>Description</key>
+      <string>Apache Solr <%= @version %></string>
+    </dict>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/opt/boxen/bin/java</string>
+      <string>-Djetty.home=<%= scope.lookupvar "::boxen::config::homebrewdir" %>/Cellar/<%= @package_name %>/<%= @package_version %>/libexec/example</string>
+      <string>-Djetty.logs=<%= @logdir %></string>
+      <string>-Dsolr.solr.home=<%= @datadir %></string>
+      <string>-Djetty.port=<%= @port %></string>
+      <string>-jar</string>
+      <string><%= scope.lookupvar "::boxen::config::homebrewdir" %>/Cellar/<%= @package_name %>/<%= @package_version %>/libexec/example/start.jar</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true />
+
+    <key>KeepAlive</key>
+    <false />
+
+    <key>LaunchOnlyOnce</key>
+    <true/>
+
+    <key>UserName</key>
+    <string><%= scope.lookupvar "::luser" %></string>
+
+    <key>WorkingDirectory</key>
+    <string><%= @datadir %></string>
+
+    <key>StandardErrorPath</key>
+    <string><%= @logdir %>/solr.error.log</string>
+
+    <key>StandardOutPath</key>
+    <string><%= @logdir %>/solr.error.log</string>
+  </dict>
+</plist>
