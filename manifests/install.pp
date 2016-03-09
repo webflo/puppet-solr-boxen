@@ -7,7 +7,7 @@
 #       package_name => 'solr14',
 #       package_version => '1.4.1-boxen1'
 #     }
-define solr::install($version, $package_name, $package_version, $port) {
+define solr::install($version, $package_name, $package_version, $port, $template = "dev.solr") {
   include solr::common
   include homebrew
   include java
@@ -25,7 +25,7 @@ define solr::install($version, $package_name, $package_version, $port) {
   }
 
   file { "/Library/LaunchDaemons/dev.solr.${version}.plist":
-    content => template("solr/dev.solr.plist.erb"),
+    content => template("solr/${template}.plist.erb"),
     group   => 'wheel',
     owner   => 'root',
   }
