@@ -2,10 +2,10 @@ require 'formula'
 
 class Solr410 < Formula
   homepage 'http://lucene.apache.org/solr/'
-  url 'https://archive.apache.org/dist/lucene/solr/4.10.2/solr-4.10.2.tgz'
-  sha1 'b913204d07212d7bb814afe4641992f22404a27d'
+  url 'https://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz'
+  sha1 '0edf666bea51990524e520bdcb811e14b4de4c41'
 
-  version '4.10.2-boxen1'
+  version '4.10.4-boxen1'
 
   def script; <<-EOS.undent
     #!/bin/sh
